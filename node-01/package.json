@@ -1,0 +1,11 @@
+{
+  "name": "node-01",
+  "version": "1.0.0",
+  "description": "simple example using node common.js module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "author": "",
+  "license": "ISC"
+}
