@@ -1,9 +1,9 @@
 let User = require('./lib/User');
 User.find().then((users) => {
     console.log(users);
-    users[2].nome = 'Adalberto';
-    return users[2].save();
-}).then(() => {
+    users[1].nome = 'Carlos';
+    return users[1].save();
+})/*.then(() => {
     let n = new User({
         nome: 'Gestrudinalvo',
         profissao: 'jogador de tênis'
@@ -13,6 +13,9 @@ User.find().then((users) => {
     return User.find({nome: new RegExp('^Ges')})
 }).then((gestrudinalvo) => {
     return gestrudinalvo[0].delete();
-}).then(() => {
+})*/.then(() => {
+    return User.find();
+}).then((users) => {
+    console.log(users);
     User.close();
 });
