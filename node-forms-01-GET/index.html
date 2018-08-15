@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type"
+              content="text/html; charset=utf-8" />
+        <title>exemplo form</title>
+    </head>
+    <body>
+
+        <form action="enviar" method="get">
+            <input type="text" name="alguma_coisa" value="">
+            <input type="submit" value="enviar por get &rarr;">
+        </form>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <form action="enviar" method="get" accept-charset="utf-8">
+            <p><label for="texto">texto:</label>
+                <input type="text" name="texto" value=""></p>
+            <p><label for="checkbox1">checkbox1</label>
+                <input type="checkbox" name="checkbox1" value="check1"></p>
+            <p><label for="checkbox2">checkbox2</label>
+                <input type="checkbox" name="checkbox2" value="check2"></p>
+            <p><input type="hidden" name="hidden" value="vai ou não vai?"></p>
+            <p><label for="textarea">textarea</label>
+                <textarea name="textarea" rows="8" cols="40"></textarea></p>
+            <p><label for="select">select</label>
+            <select name="select" id="select">
+                <option value="SP">SP</option>
+                <option value="PR">PR</option>
+                <option value="PR">MG</option>
+            </select></p>
+            <input type="submit" value="Continue &rarr;">
+        </form>
+
+    </body>
+</html>
