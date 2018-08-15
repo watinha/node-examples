@@ -12,6 +12,7 @@ router.post('/login', function(req, res, next) {
         res.redirect('/');
         return ;
     } else {
+        res.status(403);
         res.write('<h1>You shall not pass!!!</h1>');
         res.end();
     }

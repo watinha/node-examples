@@ -9,9 +9,11 @@ router.post('/login', function(req, res, next) {
         password = req.body.password;
     if (login === 'watinha' && password === 'super secreta') {
         req.session.login = 'watinha';
-        res.redirect('/');
+        res.write('<h1>Login realizado com sucesso</h1>');
+        res.end();
         return ;
     } else {
+        res.status(403);
         res.write('<h1>You shall not pass!!!</h1>');
         res.end();
     }
