@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type"
+              content="text/html; charset=utf-8" />
+        <title>Index</title>
+    </head>
+    <body>
+        <h1>Exemplo de form com GET</h1>
+        <form action="./mensagem_get" method="get" accept-charset="utf-8">
+            <label for="mensagem">mensagem:</label>
+            <input type="text" name="mensagem" value="" />
+
+            <label for="checkbox1">checkbox1</label>
+            <input type="checkbox" name="checkbox1" value="check1" />
+
+            <label for="checkbox2">checkbox2</label>
+            <input type="checkbox" name="checkbox2" value="check2" />
+
+            <textarea name="texto" rows="8" cols="40"></textarea>
+
+            <select name="cidade">
+                <option value="LO">Londrina</option>
+                <option value="CP">Cornélio Procópio</option>
+                <option value="AP">Apucarana</option>
+            </select>
+
+            <input type="submit" name="enviar" value="enviar..."/>
+        </form>
+    </body>
+</html>
