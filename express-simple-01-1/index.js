@@ -6,6 +6,7 @@ let express = require('express'),
 
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'hbs');
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/exemplo', (req, res) => {
     UserDAO.find().then((users) => {

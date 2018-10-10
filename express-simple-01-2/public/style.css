@@ -1,0 +1,11 @@
+body > ul {
+    width: 50%;
+    padding: 10px 10px 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 1px #DDD;
+}
+nav > ul li {
+    display: inline;
+    margin-right: 10px;
+    border: 1px solid black;
+}
