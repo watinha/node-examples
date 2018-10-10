@@ -94,8 +94,10 @@ retangulo.prototype.area = function () {
 let r = new retangulo(10, 2);
 console.log(r.area());
 
+var a = 10,
+    b = "Abobrinha";
 
-
+var c = true;
 
 
 
