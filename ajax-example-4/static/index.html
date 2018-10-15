@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type"
+              content="text/html; charset=utf-8" />
+        <title>Exemplo AJAX 2</title>
+    </head>
+    <body>
+        <h1>Exemplo AJAX 2</h1>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="" />
+        <input type="submit" value="adicionar &rarr;" />
+        <span class="message"></span>
+        <ul id="container"></ul>
+        <script type="text/javascript" charset="utf-8">
+            let input = document.querySelector("input[type=text]"),
+                message = document.querySelector(".message");
+            document.querySelector("input[type=submit]").addEventListener("click", function () {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "usuarios", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        message.innerHTML = 'Sucesso...';
+                        message.style.color = "green";
+                    }
+                };
+                xmlhttp.send("nome=" + input.value);
+            });
+
+            var container = document.querySelector('#container');
+            setInterval(function () {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "usuarios", true);
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
+                        container.innerHTML = xmlhttp.responseText;
+                };
+                xmlhttp.send();
+            }, 5000);
+        </script>
+    </body>
+</html>

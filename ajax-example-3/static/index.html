@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type"
+              content="text/html; charset=utf-8" />
+        <title>Exemplo AJAX 2</title>
+    </head>
+    <body>
+        <h1>Exemplo AJAX 2</h1>
+        <ul id="container"></ul>
+        <script type="text/javascript" charset="utf-8">
+            var container = document.querySelector('#container');
+            setInterval(function () {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "usuarios", true);
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
+                        container.innerHTML = xmlhttp.responseText;
+                };
+                xmlhttp.send();
+            }, 5000);
+        </script>
+    </body>
+</html>
