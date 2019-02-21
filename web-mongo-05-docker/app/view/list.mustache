@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Index</title>
+    </head>
+    <body>
+        <h1>Lista de usuários</h1>
+        <ul>
+            <li><a href="nome">Nome</a></li>
+            <li><a href="profissao">Profissão</a></li>
+            <li><a href="/user/new">Novo</a></li>
+        </ul>
+        <ul>
+        {{#users}}
+            <li><a href="user/{{_id}}">{{nome}} {{profissao}}</a></li>
+        {{/users}}
+        </ul>
+    </body>
+</html>

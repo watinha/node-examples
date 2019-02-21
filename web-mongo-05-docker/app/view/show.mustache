@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Show User - {{nome}}</title>
+    </head>
+    <body>
+        <h1>{{nome}}</h1>
+        <p>{{profissao}}</p>
+        <form style="display:inline" action="/user/delete" method="POST" accept-charset="utf-8">
+            <input type="hidden" name="id" value="{{_id}}">
+            <input type="submit" value="Deletar &rarr;"></p>
+        </form>
+        <a href="/">voltar</a>
+    </body>
+</html>
