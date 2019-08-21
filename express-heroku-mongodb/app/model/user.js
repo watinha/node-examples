@@ -9,7 +9,7 @@ module.exports = (() => {
         list: () => {
             let self = this;
             return client.connect(db_url, { useNewUrlParser: true }).then((connection) => {
-                let dbo = connection.db('mongo-test');
+                let dbo = connection.db();
                 self.conn = connection;
                 return dbo.collection('user').find().toArray();
             }).catch((err) => {
