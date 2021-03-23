@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Index</title>
+  </head>
+  <body>
+    <h1>Lista de usuários</h1>
+    <ul>
+    </ul>
+
+    <form action="./user" method="post" accept-charset="utf-8">
+      <label for="nome">Nome</label><input type="text" name="nome" value="" />
+      <label for="idade">Idade</label><input type="text" name="idade" value="" />
+      <input type="submit" value="adicionar &rarr;"></p>
+    </form>
+
+    <script type="text/javascript" charset="utf-8">
+      const container = document.querySelector('ul'),
+            nome = document.querySelector('input[name=nome]'),
+            idade = document.querySelector('input[name=idade]'),
+            submit = document.querySelector('input[type=submit]');
+
+      submit.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        fetch('./user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: nome.value,
+            idade: idade.value
+          })
+        });
+      });
+
+      setInterval(async () => {
+        const users = await (await fetch('./user')).json();
+        container.innerHTML = '';
+        users.forEach((user) => {
+          const li = document.createElement('li'),
+                edit_button = document.createElement('button'),
+                delete_button = document.createElement('button');
+          li.innerHTML = user.name;
+          delete_button.innerHTML = '[delete]';
+          delete_button.addEventListener('click', () => {
+            fetch(`./user/${user._id}`, {
+              method: 'DELETE'
+            });
+            delete_button.innerHTML = '...removendo';
+          });
+          edit_button.innerHTML = '[edit]';
+
+          li.appendChild(delete_button);
+          li.appendChild(edit_button);
+          container.appendChild(li);
+        });
+      }, 5000);
+    </script>
+  </body>
+</html>
