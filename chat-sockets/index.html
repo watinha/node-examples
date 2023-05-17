@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>WebSocket Example</title>
+  </head>
+  <body>
+    <h1>WebSocket Example</h1>
+    <button class="connect">Connect</button>
+    <button class="disconnect">Disconnect</button>
+
+    <input type="text"/>
+    <button class="send">Send</button>
+
+    <ul></ul>
+
+    <script type="text/javascript" charset="utf-8">
+      const connect = document.querySelector('.connect'),
+            disconnect = document.querySelector('.disconnect'),
+            send = document.querySelector('.send'),
+            input = document.querySelector('input'),
+            ul = document.querySelector('ul');
+
+      let socket = null;
+
+      connect.addEventListener('click', () => {
+        socket = new WebSocket('ws://localhost:3000');
+        socket.addEventListener('message', (msg) => {
+          const li = document.createElement('li');
+          li.innerHTML = msg.data;
+          ul.appendChild(li);
+        });
+      });
+
+      disconnect.addEventListener('click', () => {
+        socket.close();
+      });
+
+      send.addEventListener('click', () => {
+        socket.send(input.value);
+        input.value = '';
+      });
+    </script>
+
+  </body>
+</html>

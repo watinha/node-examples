@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Sem websockets</title>
+  </head>
+  <body>
+    <h1>Sem websockets</h1>
+    <input type="text" />
+    <button class="send">Send</button>
+    <ul></ul>
+
+    <script type="text/javascript" charset="utf-8">
+      const send = document.querySelector('.send'),
+            input = document.querySelector('input'),
+            ul = document.querySelector('ul');
+
+      send.addEventListener('click', () => {
+        const msg = input.value;
+        fetch('http://localhost:3000/message', {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({ msg })
+        });
+      });
+
+      setInterval(async () => {
+        const resp = await (fetch('http://localhost:3000/message').then((r) => r.json()));
+        ul.innerHTML = '';
+        resp.forEach((msg) => {
+          const li = document.createElement('li');
+          li.innerHTML = msg;
+          ul.appendChild(li);
+        });
+      }, 5000);
+    </script>
+  </body>
+</html>
