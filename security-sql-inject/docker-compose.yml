@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  nodejs:
+    image: node:22-alpine
+    tty: true
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    working_dir: /app
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0-bookworm
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
