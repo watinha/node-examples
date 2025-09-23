@@ -1,0 +1,26 @@
+version: '3'
+services:
+  node:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    expose:
+      - "3000"
+      - "3001"
+    depends_on:
+      - mongo
+      - rabbitmq
+      - redis
+
+  mongo:
+    image: mongo:6.0.7
+
+  rabbitmq:
+    image: rabbitmq:4.1.4-alpine
+
+  redis:
+    image: redis:8.0-alpine
