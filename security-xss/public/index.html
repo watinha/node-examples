@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Web Page</title>
+</head>
+<body>
+    <h1>Comments</h1>
+    <fieldset>
+	<legend>Leave a Comment</legend>
+	<form>
+	  <label>Comment:</label>
+	  <input type="text" name="comment" required />
+	  <button>Submit</button>
+	  <span />
+	</form>
+    </fieldset>
+
+    <ul>
+    </ul>
+
+    <script type="text/javascript">
+	let input = document.querySelector('input'),
+	    button = document.querySelector('button'),
+	    span = document.querySelector('span'),
+	    ul = document.querySelector('ul');
+
+	button.addEventListener('click', async function() {
+          let resp = await fetch('http://localhost:3000/comment', {
+	    method: 'POST',
+	    headers: {
+	      'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify({ content: input.value })
+	  });
+	  let { msg } = await resp.json();
+	  span.textContent = msg;
+	  input.value = '';
+	});
+cree
+	setInterval(async function() {
+	  let resp = await fetch('http://localhost:3000/comment'),
+	      comments = await resp.json();
+	  ul.innerHTML = '';
+	  comments.forEach(function(comment) {
+	    let li = document.createElement('li');
+	    li.innerHTML = comment.content;
+	    ul.appendChild(li);
+	  });
+	}, 5000);
+    </script>
+</body>
+</html

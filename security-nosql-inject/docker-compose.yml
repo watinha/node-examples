@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  nodejs:
+    image: node:22-alpine
+    tty: true
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    working_dir: /app
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongodb/mongodb-community-server:8.0.1-ubuntu2204
+    ports:
+      - "27017:27017"
